@@ -83,7 +83,7 @@
                <children>
                   <TextField fx:id="studentID" promptText="Student ID" />
                   <TextField fx:id="firstName" layoutX="10.0" layoutY="10.0" promptText="First Name" />
-                  <TextField fx:id="LastName" layoutX="10.0" layoutY="37.0" promptText="Last Name" />
+                  <TextField fx:id="lastName" layoutX="10.0" layoutY="37.0" promptText="Last Name" />
                   <TextField fx:id="address" layoutX="10.0" layoutY="37.0" promptText="Address" />
                   <TextField fx:id="city" layoutX="10.0" layoutY="64.0" promptText="City" />
                   <TextField fx:id="state" layoutX="10.0" layoutY="91.0" promptText="State" />
@@ -96,7 +96,7 @@
                   <TextField fx:id="totalUnits" layoutX="10.0" layoutY="280.0" promptText="Total Units" />
                   <TextField fx:id="dueTuition" layoutX="10.0" layoutY="307.0" promptText="due Tuition" />
                   <Button fx:id="addStudentButton" mnemonicParsing="false" onAction="#addStudentButtonListener" text="Add Student" />
-                  <Button fx:id="deleteStuentButton" layoutX="10.0" layoutY="388.0" mnemonicParsing="false" onAction="#deleteStudentButtonListener" text="Delete Student" />
+                  <Button fx:id="deleteStudentButton" layoutX="10.0" layoutY="388.0" mnemonicParsing="false" onAction="#deleteStudentButtonListener" text="Delete Student" />
                </children>
             </VBox>
          </children>
