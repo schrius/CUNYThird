@@ -2,7 +2,7 @@ package Register;
 
 public class Administer {
 	final String NAME = "name";
-	final String PASSWORD = "password";
+	final String PASSWORD = "pass";
 	public Administer() {
 
 	}

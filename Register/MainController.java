@@ -11,25 +11,26 @@ import javafx.stage.Stage;
 
 public class MainController {
 	Parent parent;
-	
+	RegisterJDBC registerJDBC = new RegisterJDBC();
+
 	@FXML
 	private Button studentButton;
-	
+
 	@FXML
 	private Button admisniterButton;
-	
+
 	public void studentButtonListener() throws IOException {
 		Stage stage = (Stage)studentButton.getScene().getWindow();
 		parent = FXMLLoader.load(getClass().getResource("StudentLoginFX.fxml"));
 		Scene scene = new Scene(parent);
 		stage.setScene(scene);
 	}
-	
+
 	public void administerButtonListener() throws IOException {
 		Stage stage = (Stage)studentButton.getScene().getWindow();
 		parent = FXMLLoader.load(getClass().getResource("AdministerLoginFX.fxml"));
 		Scene scene = new Scene(parent);
 		stage.setScene(scene);
 	}
-	
+
 }

@@ -112,8 +112,8 @@ public class Student {
 	public double getGPA() {
 		return GPA;
 	}
-	public void setGPA(double gPA) {
-		GPA = gPA;
+	public void setGPA(double GPA) {
+		this.GPA = GPA;
 	}
 	public double getFurtureTuition() {
 		return furtureTuition;
