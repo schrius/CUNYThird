@@ -215,7 +215,7 @@ public class AdministerCenterController {
 
 			TableColumn<Student, String> idColumn = new TableColumn<>("StudentID");
 			idColumn.setMinWidth(100);
-			idColumn.setCellValueFactory(new PropertyValueFactory<>("studentID"));
+			idColumn.setCellValueFactory(new PropertyValueFactory<>("studentId"));
 
 			TableColumn<Student, String> firstNameColumn = new TableColumn<>("FirstName");
 			firstNameColumn.setMinWidth(100);
@@ -239,15 +239,15 @@ public class AdministerCenterController {
 
 			TableColumn<Student, String> zipCodeColumn = new TableColumn<>("ZipCode");
 			zipCodeColumn.setMinWidth(100);
-			zipCodeColumn.setCellValueFactory(new PropertyValueFactory<>("zipcode"));
+			zipCodeColumn.setCellValueFactory(new PropertyValueFactory<>("zipCode"));
 
 			TableColumn<Student, String> SSNColumn = new TableColumn<>("SSN");
 			SSNColumn.setMinWidth(100);
-			SSNColumn.setCellValueFactory(new PropertyValueFactory<>("SSN"));
+			SSNColumn.setCellValueFactory(new PropertyValueFactory<>("socialSecurityNumber"));
 
 			TableColumn<Student, String> DOBColumn = new TableColumn<>("DOB");
 			DOBColumn.setMinWidth(100);
-			DOBColumn.setCellValueFactory(new PropertyValueFactory<>("DOB"));
+			DOBColumn.setCellValueFactory(new PropertyValueFactory<>("DateOfBirth"));
 
 			TableColumn<Student, String> majorColumn = new TableColumn<>("Major");
 			majorColumn.setMinWidth(100);
@@ -273,7 +273,7 @@ public class AdministerCenterController {
 
 			table.setItems(getStudent());
 			table.getColumns().addAll(idColumn, firstNameColumn, lastNameColumn, addressColumn,
-					stateColumn, zipCodeColumn, SSNColumn, DOBColumn, majorColumn, genderColumn,
+					cityColumn, stateColumn, zipCodeColumn, SSNColumn, DOBColumn, majorColumn, genderColumn,
 					GPAColumn, totalUnitsColumn, dueTuitionColumn);
 			System.out.println("Search student..");
 		}
@@ -283,11 +283,11 @@ public class AdministerCenterController {
 	public void addStudentButtonListener() throws SQLException {
 		String sql = "INSERT INTO Student(StudentID, FirstName, LastName, Address, City, State,"
 				+ "ZipCode, SSN, DOB, Major, Gender, GPA, TotalUnits, DueTuition) VALUES"
-				+ "('" + studentID.getText() + "'," + "'" + firstName.getText() + "'," + "'" + lastName.getText() + "',"
+				+ "(" + studentID.getText() + "," + "'" + firstName.getText() + "'," + "'" + lastName.getText() + "',"
 				+ "'" + address.getText() + "'," + "'" + city.getText() + "'," + "'" + state.getText() + "',"
 				+ "'" + zipCode.getText() + "'," + "'" + SSN.getText() + "'," + "'" + DOB.getText() + "',"
-				+ "'" + major.getText() + "'," + "'" + gender.getText() + "'," + "'" + Double.parseDouble(GPA.getText()) + "',"
-				+ "'" + Double.parseDouble(totalUnits.getText()) + "',"+ "'" + Double.parseDouble(dueTuition.getText()) + "')";
+				+ "'" + major.getText() + "'," + "'" + gender.getText() + "'," + GPA.getText() + ","
+				 + totalUnits.getText() + ","+ dueTuition.getText() + ")";
 		RegisterJDBC.excuteSQL(sql);
 	}
 
@@ -330,7 +330,7 @@ public class AdministerCenterController {
 				Double.parseDouble(RegisterJDBC.result.getString("CurrentUnit")),
 				RegisterJDBC.result.getString("Password")));
 		}
-		System.out.println(students.size() + "Rows has been found");
+		System.out.println(students.size() + " Rows has been found");
 		return students;
 	}
 
@@ -347,7 +347,7 @@ public class AdministerCenterController {
 					Double.parseDouble(RegisterJDBC.result.getString("Salary"))
 					));
 		}
-		System.out.println(instructors.size() + "Rows has been found");
+		System.out.println(instructors.size() + " Rows has been found");
 		return instructors;
 	}
 
@@ -368,6 +368,7 @@ public class AdministerCenterController {
 					RegisterJDBC.result.getString("InstructorLastName"), 
 					RegisterJDBC.result.getString("Department"), 
 					RegisterJDBC.result.getString("RequiredCourse")));
+			System.out.println(courses.size() + " Rows has been found");
 		}
 		return courses;
 	}
