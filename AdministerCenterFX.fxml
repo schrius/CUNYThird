@@ -18,7 +18,7 @@
                   <ToggleGroup fx:id="toggleGroupSearch" />
                </toggleGroup>
             </RadioButton>
-            <RadioButton fx:id="instrucotrRadio" mnemonicParsing="false" text="Instructor" toggleGroup="$toggleGroupSearch" />
+            <RadioButton fx:id="instructorRadio" mnemonicParsing="false" text="Instructor" toggleGroup="$toggleGroupSearch" />
             <RadioButton fx:id="studentRadio" layoutX="177.0" layoutY="10.0" mnemonicParsing="false" text="Student" toggleGroup="$toggleGroupSearch" />
             <Button fx:id="searchButton" mnemonicParsing="false" onAction="#searchButtonListerner" text="Search" />
          </children>
@@ -51,10 +51,8 @@
       </HBox>
    </bottom>
    <center>
-      <TableView BorderPane.alignment="CENTER">
+      <TableView fx:id="table" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
         </columns>
       </TableView>
    </center>
@@ -74,7 +72,7 @@
                   <TextField fx:id="courseRequirement" layoutX="10.0" layoutY="199.0" promptText="requirement" />
                   <TextField fx:id="courseUnit" layoutX="10.0" layoutY="226.0" promptText="units" />
                   <TextField fx:id="instructorID" layoutX="10.0" layoutY="253.0" promptText="Instructor ID" />
-                  <TextField fx:id="courseDepartment" layoutX="10.0" layoutY="280.0" promptText="Department" />
+                  <TextField fx:id="departmentNumber" layoutX="10.0" layoutY="280.0" promptText="Department" />
                   <Button fx:id="addCourseButton" mnemonicParsing="false" onAction="#addCourseButtonListener" text="Add Course" />
                   <Button fx:id="deleteCourseButton" layoutX="10.0" layoutY="334.0" mnemonicParsing="false" onAction="#deleteCourseButtonListener" text="Delete Course" />
                </children>
@@ -83,7 +81,7 @@
                <children>
                   <TextField fx:id="studentID" promptText="Student ID" />
                   <TextField fx:id="firstName" layoutX="10.0" layoutY="10.0" promptText="First Name" />
-                  <TextField fx:id="LastName" layoutX="10.0" layoutY="37.0" promptText="Last Name" />
+                  <TextField fx:id="lastName" layoutX="10.0" layoutY="37.0" promptText="Last Name" />
                   <TextField fx:id="address" layoutX="10.0" layoutY="37.0" promptText="Address" />
                   <TextField fx:id="city" layoutX="10.0" layoutY="64.0" promptText="City" />
                   <TextField fx:id="state" layoutX="10.0" layoutY="91.0" promptText="State" />
@@ -96,7 +94,7 @@
                   <TextField fx:id="totalUnits" layoutX="10.0" layoutY="280.0" promptText="Total Units" />
                   <TextField fx:id="dueTuition" layoutX="10.0" layoutY="307.0" promptText="due Tuition" />
                   <Button fx:id="addStudentButton" mnemonicParsing="false" onAction="#addStudentButtonListener" text="Add Student" />
-                  <Button fx:id="deleteStuentButton" layoutX="10.0" layoutY="388.0" mnemonicParsing="false" onAction="#deleteStudentButtonListener" text="Delete Student" />
+                  <Button fx:id="deleteStudentButton" layoutX="10.0" layoutY="388.0" mnemonicParsing="false" onAction="#deleteStudentButtonListener" text="Delete Student" />
                </children>
             </VBox>
          </children>

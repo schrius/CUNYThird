@@ -7,12 +7,15 @@ public class Instructor {
 	String department;
 	String office;
 	String phone;
+	String hireDate;
+	double salary;
 	
 	public Instructor(){
 		
 	}
+
 	public Instructor(String instructorId, String firstName, String lastName, String department, String office,
-			String phone) {
+			String phone, String hireDate, double salary) {
 		super();
 		this.instructorId = instructorId;
 		this.firstName = firstName;
@@ -20,7 +23,10 @@ public class Instructor {
 		this.department = department;
 		this.office = office;
 		this.phone = phone;
+		this.hireDate = hireDate;
+		this.salary = salary;
 	}
+
 	public String getInstructorId() {
 		return instructorId;
 	}
@@ -56,6 +62,20 @@ public class Instructor {
 	}
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+	public String getHireDate() {
+		return hireDate;
+	}
+
+	public void setHireDate(String hireDate) {
+		this.hireDate = hireDate;
+	}
+	public double getSalary() {
+		return salary;
+	}
+
+	public void setSalary(double salary) {
+		this.salary = salary;
 	}
 	
 }
