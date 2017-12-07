@@ -8,7 +8,7 @@ import java.sql.Statement;
 
 public class RegisterJDBC {
 	static final String JDBC_DRIVER = "oracle.jdbc.driver.OracleDriver";
-	static final String DB_URL = "jdbc:oracle:thin:@localhost:1521:xe";
+	static final String DB_URL = "jdbc:oracle:thin:@DathanPC:1521:xe";
 	static final String DB_USER = "cisc3810";
 	static final String DB_PASS = "cisc3810";
 	String sqlStatement = "";

@@ -1,14 +1,17 @@
 package Register;
 
 public class Department {
+	String departmentNumber;
 	String departmentName;
 	int staff;
 	
 	Department() {
+		this.departmentNumber = "";
 		this.departmentName = "";
 		this.staff = 0;
 	}
-	Department(String departmentName, int staff) {
+	Department(String departmentNumber, String departmentName, int staff) {
+		this.departmentNumber = departmentName;
 		this.departmentName = departmentName;
 		this.staff = staff;
 	}
@@ -25,6 +28,12 @@ public class Department {
 	}
 	public void setStaff(int staff) {
 		this.staff = staff;
+	}
+	public String getDepartmentNumber() {
+		return departmentNumber;
+	}
+	public void setDepartmentNumber(String departmentNumber) {
+		this.departmentNumber = departmentNumber;
 	}
 
 }

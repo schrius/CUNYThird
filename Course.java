@@ -8,18 +8,21 @@ public class Course {
 	String room;
 	String startDate;
 	String endDate;
+	String days;
 	String time;
 	String requiredCourse;
 	double units;
-	Instructor instructor;
-	Department department;
+	String instructorFirstName;
+	String instructorLastName;
+	String department;
 	
 	public Course() {
-		
+
 	}
+
 	public Course(String courseCode, String courseName, String description, String semester, String room,
-			String startDate, String endDate, String time, double units, Instructor instructor, Department department,
-			String requiredCourse) {
+			String startDate, String endDate, String time, String days, double units, String instructorFirstName, 
+			String instructorLastName, String department, String requiredCourse) {
 		super();
 		this.courseCode = courseCode;
 		this.courseName = courseName;
@@ -29,8 +32,10 @@ public class Course {
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.time = time;
+		this.days = days;
 		this.units = units;
-		this.instructor = instructor;
+		this.instructorFirstName = instructorFirstName;
+		this.instructorLastName = instructorLastName;
 		this.department = department;
 		this.requiredCourse = requiredCourse;
 	}
@@ -82,22 +87,36 @@ public class Course {
 	public void setTime(String time) {
 		this.time = time;
 	}
+	public String getDays() {
+		return days;
+	}
+
+	public void setDays(String days) {
+		this.days = days;
+	}
+
 	public double getUnits() {
 		return units;
 	}
 	public void setUnits(double units) {
 		this.units = units;
 	}
-	public Instructor getInstructor() {
-		return instructor;
+	public String getInstructorFirstName() {
+		return instructorFirstName;
 	}
-	public void setInstructor(Instructor instructor) {
-		this.instructor = instructor;
+	public void setInstructorFirstName(String instructorFirstName) {
+		this.instructorFirstName = instructorFirstName;
 	}
-	public Department getDepartment() {
+	public String getInstructorLastName() {
+		return instructorLastName;
+	}
+	public void setInstructorLastName(String instructorLastName) {
+		this.instructorLastName = instructorLastName;
+	}
+	public String getDepartment() {
 		return department;
 	}
-	public void setDepartment(Department department) {
+	public void setDepartment(String department) {
 		this.department = department;
 	}
 	public String getRequiredCourse() {

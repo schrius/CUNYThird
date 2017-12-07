@@ -18,7 +18,7 @@
                   <ToggleGroup fx:id="toggleGroupSearch" />
                </toggleGroup>
             </RadioButton>
-            <RadioButton fx:id="instrucotrRadio" mnemonicParsing="false" text="Instructor" toggleGroup="$toggleGroupSearch" />
+            <RadioButton fx:id="instructorRadio" mnemonicParsing="false" text="Instructor" toggleGroup="$toggleGroupSearch" />
             <RadioButton fx:id="studentRadio" layoutX="177.0" layoutY="10.0" mnemonicParsing="false" text="Student" toggleGroup="$toggleGroupSearch" />
             <Button fx:id="searchButton" mnemonicParsing="false" onAction="#searchButtonListerner" text="Search" />
          </children>
@@ -51,10 +51,8 @@
       </HBox>
    </bottom>
    <center>
-      <TableView BorderPane.alignment="CENTER">
+      <TableView fx:id="table" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
         </columns>
       </TableView>
    </center>
@@ -74,7 +72,7 @@
                   <TextField fx:id="courseRequirement" layoutX="10.0" layoutY="199.0" promptText="requirement" />
                   <TextField fx:id="courseUnit" layoutX="10.0" layoutY="226.0" promptText="units" />
                   <TextField fx:id="instructorID" layoutX="10.0" layoutY="253.0" promptText="Instructor ID" />
-                  <TextField fx:id="courseDepartment" layoutX="10.0" layoutY="280.0" promptText="Department" />
+                  <TextField fx:id="departmentNumber" layoutX="10.0" layoutY="280.0" promptText="Department" />
                   <Button fx:id="addCourseButton" mnemonicParsing="false" onAction="#addCourseButtonListener" text="Add Course" />
                   <Button fx:id="deleteCourseButton" layoutX="10.0" layoutY="334.0" mnemonicParsing="false" onAction="#deleteCourseButtonListener" text="Delete Course" />
                </children>

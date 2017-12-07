@@ -11,11 +11,11 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 public class AdministerCenterController {
 	@FXML
 	private TextField searchField;
-
 
 	// Course pane
 	@FXML
@@ -33,6 +33,8 @@ public class AdministerCenterController {
 	@FXML
 	private TextField courseEndDate;
 	@FXML
+	private TextField courseDays;
+	@FXML
 	private TextField courseTime;
 	@FXML
 	private TextField courseRequirement;
@@ -41,7 +43,7 @@ public class AdministerCenterController {
 	@FXML
 	private TextField instructorID;
 	@FXML
-	private TextField courseDepartment;
+	private TextField departmentNumber;
 
 	// Student pane
 	@FXML
@@ -82,7 +84,7 @@ public class AdministerCenterController {
 	private RadioButton studentRadio;
 
 	@FXML
-	private TableView<Object> table;
+	private TableView<Student> table;
 
 	// SQL pane
 	@FXML
@@ -101,6 +103,8 @@ public class AdministerCenterController {
 	private Button addStudentButton;
 	@FXML
 	private Button deleteStudentButton;
+	@FXML
+	private ToggleGroup toggleGroupSearch;
 
 	//search Field for generate Database.
 	@SuppressWarnings("unchecked")
@@ -111,9 +115,105 @@ public class AdministerCenterController {
 		if(courseRadio.isSelected()){
 			sql = "SELECT * FROM Course WHERE CourseName = '" + search + "' OR " + "CourseCode = '" + search + "'";
 			RegisterJDBC.excuteSQL(sql);
-			TableView<Student> studentTable = new TableView<Student>();
+			TableColumn<Course, String> courseCodeColumn = new TableColumn<>("CourseCode");
+			courseCodeColumn.setMinWidth(100);
+			courseCodeColumn.setCellValueFactory(new PropertyValueFactory<>("courseCode"));
+			
+			TableColumn<Course, String> CourseNameColumn = new TableColumn<>("CourseName");
+			CourseNameColumn.setMinWidth(100);
+			CourseNameColumn.setCellValueFactory(new PropertyValueFactory<>("courseName"));
+			
+			TableColumn<Course, String> semesterColumn = new TableColumn<>("Semester");
+			semesterColumn.setMinWidth(100);
+			semesterColumn.setCellValueFactory(new PropertyValueFactory<>("semester"));
+			
+			TableColumn<Course, String> roomColumn = new TableColumn<>("Room");
+			roomColumn.setMinWidth(100);
+			roomColumn.setCellValueFactory(new PropertyValueFactory<>("room"));
+			
+			TableColumn<Course, String> departmentColumn = new TableColumn<>("Department");
+			departmentColumn.setMinWidth(100);
+			departmentColumn.setCellValueFactory(new PropertyValueFactory<>("department"));
+			
+			TableColumn<Course, String> startDateColumn = new TableColumn<>("StartDate");
+			startDateColumn.setMinWidth(100);
+			startDateColumn.setCellValueFactory(new PropertyValueFactory<>("startDate"));
+			
+			TableColumn<Course, String> endDateColumn = new TableColumn<>("EndDate");
+			endDateColumn.setMinWidth(100);
+			endDateColumn.setCellValueFactory(new PropertyValueFactory<>("endDate"));
+			
+			TableColumn<Course, String> daysColumn = new TableColumn<>("Days");
+			daysColumn.setMinWidth(100);
+			daysColumn.setCellValueFactory(new PropertyValueFactory<>("days"));
+			
+			TableColumn<Course, String> timeColumn = new TableColumn<>("Time");
+			timeColumn.setMinWidth(100);
+			timeColumn.setCellValueFactory(new PropertyValueFactory<>("time"));
+			
+			TableColumn<Course, String> requiredCourseColumn = new TableColumn<>("RequiredCourse");
+			requiredCourseColumn.setMinWidth(100);
+			requiredCourseColumn.setCellValueFactory(new PropertyValueFactory<>("requiredCourse"));
+			
+			TableColumn<Course, String> InstructorFirstNameColumn = new TableColumn<>("Instructor FirstName");
+			InstructorFirstNameColumn.setMinWidth(100);
+			InstructorFirstNameColumn.setCellValueFactory(new PropertyValueFactory<>("instructorFirstName"));
+			
+			TableColumn<Course, String> instructorLastNameColumn = new TableColumn<>("Instructor LastName");
+			instructorLastNameColumn.setMinWidth(100);
+			instructorLastNameColumn.setCellValueFactory(new PropertyValueFactory<>("instructorLastName"));
+			
+			TableColumn<Course, String> descriptionColumn = new TableColumn<>("Description");
+			descriptionColumn.setMinWidth(100);
+			descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
+			
+			TableColumn<Course, Double> courseUnitsColumn = new TableColumn<>("Units");
+			courseUnitsColumn.setMinWidth(100);
+			courseUnitsColumn.setCellValueFactory(new PropertyValueFactory<>("units"));
+		}
+		else if(instructorRadio.isSelected()){
+			sql = "SELECT * FROM Instructor WHERE FirstName = '" + search + "' OR " + "LastName = '" + search
+					+ "' OR instructorID = '" + search + "'";
+			RegisterJDBC.excuteSQL(sql);
+			TableColumn<Instructor, String> instructorIDColumn = new TableColumn<>("InstructorID");
+			instructorIDColumn.setMinWidth(100);
+			instructorIDColumn.setCellValueFactory(new PropertyValueFactory<>("InstructorID"));
+			
+			TableColumn<Instructor, String> instructorFirstNameColumn = new TableColumn<>("FirstName");
+			instructorFirstNameColumn.setMinWidth(100);
+			instructorFirstNameColumn.setCellValueFactory(new PropertyValueFactory<>("LastName"));
 
-			TableColumn<Student, String> idColumn = new TableColumn<>("Student ID");
+			TableColumn<Instructor, String> instructorLastNameColumn = new TableColumn<>("LastName");
+			instructorLastNameColumn.setMinWidth(100);
+			instructorLastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+			
+			TableColumn<Instructor, String> departmentLastNameColumn = new TableColumn<>("Department");
+			departmentLastNameColumn.setMinWidth(100);
+			departmentLastNameColumn.setCellValueFactory(new PropertyValueFactory<>("department"));
+			
+			TableColumn<Instructor, String> officeColumn = new TableColumn<>("Office");
+			officeColumn.setMinWidth(100);
+			officeColumn.setCellValueFactory(new PropertyValueFactory<>("office"));
+
+			TableColumn<Instructor, String> phoneColumn = new TableColumn<>("Phone");
+			phoneColumn.setMinWidth(100);
+			phoneColumn.setCellValueFactory(new PropertyValueFactory<>("phone"));
+
+			TableColumn<Instructor, String> hireDateColumn = new TableColumn<>("HireDate");
+			hireDateColumn.setMinWidth(100);
+			hireDateColumn.setCellValueFactory(new PropertyValueFactory<>("hireDate"));
+
+			TableColumn<Instructor, Double> salaryColumn = new TableColumn<>("Salary");
+			salaryColumn.setMinWidth(100);
+			salaryColumn.setCellValueFactory(new PropertyValueFactory<>("salary"));
+			
+		}
+		else {
+			sql = "SELECT * FROM Student WHERE FirstName = '" + search + "' OR " + "LastName = '" + search
+					+ "' OR StudentID = '" + search + "'";
+			RegisterJDBC.excuteSQL(sql);
+
+			TableColumn<Student, String> idColumn = new TableColumn<>("StudentID");
 			idColumn.setMinWidth(100);
 			idColumn.setCellValueFactory(new PropertyValueFactory<>("studentID"));
 
@@ -171,26 +271,11 @@ public class AdministerCenterController {
 
 			RegisterJDBC.excuteSQL(sql);
 
-			studentTable.setItems(getStudent());
-			studentTable.getColumns().addAll(idColumn, firstNameColumn, lastNameColumn, addressColumn,
+			table.setItems(getStudent());
+			table.getColumns().addAll(idColumn, firstNameColumn, lastNameColumn, addressColumn,
 					stateColumn, zipCodeColumn, SSNColumn, DOBColumn, majorColumn, genderColumn,
 					GPAColumn, totalUnitsColumn, dueTuitionColumn);
-		}
-		else if(instructorRadio.isSelected()){
-			sql = "SELECT * FROM Instructor WHERE FirstName = '" + search + "' OR " + "LastName = '" + search
-					+ "' OR instructorID = '" + search + "'";
-			RegisterJDBC.excuteSQL(sql);
-			while(RegisterJDBC.result.next()){
-
-			}
-		}
-		else {
-			sql = "SELECT * FROM Student WHERE FirstName = '" + search + "' OR " + "LastName = '" + search
-					+ "' OR studentID = '" + search + "'";
-			RegisterJDBC.excuteSQL(sql);
-			while(RegisterJDBC.result.next()){
-
-			}
+			System.out.println("Search student..");
 		}
 	}
 
@@ -242,21 +327,48 @@ public class AdministerCenterController {
 				Double.parseDouble(RegisterJDBC.result.getString("FurtureTuition")),
 				Double.parseDouble(RegisterJDBC.result.getString("DueTuition")),
 				Double.parseDouble(RegisterJDBC.result.getString("TotalUnits")),
-				Double.parseDouble(RegisterJDBC.result.getString("CurrentUnits")),
+				Double.parseDouble(RegisterJDBC.result.getString("CurrentUnit")),
 				RegisterJDBC.result.getString("Password")));
 		}
+		System.out.println(students.size() + "Rows has been found");
 		return students;
 	}
 
-	ObservableList<Instructor> getInstructor(){
+	ObservableList<Instructor> getInstructor() throws SQLException{
 		ObservableList<Instructor> instructors = FXCollections.observableArrayList();
-		instructors.add(new Instructor());
+		while(RegisterJDBC.result.next()){
+			instructors.add(new Instructor(RegisterJDBC.result.getString("InstructorID"), 
+					RegisterJDBC.result.getString("FirstName"), 
+					RegisterJDBC.result.getString("LastName"), 
+					RegisterJDBC.result.getString("Department"),
+					RegisterJDBC.result.getString("Office"),
+					RegisterJDBC.result.getString("Phone"),
+					RegisterJDBC.result.getString("HireDate"),
+					Double.parseDouble(RegisterJDBC.result.getString("Salary"))
+					));
+		}
+		System.out.println(instructors.size() + "Rows has been found");
 		return instructors;
 	}
 
-	ObservableList<Course> getCourse(){
+	ObservableList<Course> getCourse() throws NumberFormatException, SQLException{
 		ObservableList<Course> courses = FXCollections.observableArrayList();
-		courses.add(new Course());
+		while(RegisterJDBC.result.next()){
+			courses.add(new Course(RegisterJDBC.result.getString("CourseCode"), 
+					RegisterJDBC.result.getString("CourseName"), 
+					RegisterJDBC.result.getString("Description"), 
+					RegisterJDBC.result.getString("Semester"),
+					RegisterJDBC.result.getString("Room"), 
+					RegisterJDBC.result.getString("StartDate"), 
+					RegisterJDBC.result.getString("EndDate"), 
+					RegisterJDBC.result.getString("Days"), 
+					RegisterJDBC.result.getString("Time"), 
+					Double.parseDouble(RegisterJDBC.result.getString("Units")), 
+					RegisterJDBC.result.getString("InstructorFirstName"), 
+					RegisterJDBC.result.getString("InstructorLastName"), 
+					RegisterJDBC.result.getString("Department"), 
+					RegisterJDBC.result.getString("RequiredCourse")));
+		}
 		return courses;
 	}
 }
