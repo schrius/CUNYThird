@@ -1,5 +1,7 @@
 package Register;
-
+/*
+ * Course class, use for table view, store data in SQL
+ */
 public class Course {
 	String courseCode;
 	String courseName;

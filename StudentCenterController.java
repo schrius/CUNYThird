@@ -1,5 +1,9 @@
 package Register;
-
+/*
+ * student center controller handle all student input, such as
+ * search/add course, make pay payment.
+ * 
+ */
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;

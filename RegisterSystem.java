@@ -5,7 +5,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
+/*
+ * Main screen
+ * Connect sql and setup the entity.
+ * Ideally, this should not be included. Student and administer never use the same platform.
+ * And sql connection should be generating when login or sign up is requested.
+ */
 public class RegisterSystem extends Application{
 	Stage window;
 	@Override

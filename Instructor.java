@@ -1,5 +1,7 @@
 package Register;
-
+/*
+ * instructor class, data about the instructors. InstructorID is a foreign key for courses.
+ */
 public class Instructor {
 	String instructorId;
 	String firstName;

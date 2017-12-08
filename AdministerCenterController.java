@@ -1,5 +1,9 @@
 package Register;
 
+/*
+ * Administer component manipulate all data getting, updating 
+ * adding new courses, students
+ */
 import java.sql.SQLException;
 
 import javafx.collections.FXCollections;
@@ -75,7 +79,7 @@ public class AdministerCenterController {
 	@FXML
 	private TextField dueTuition;
 
-	// search radioButton
+	//radioButton for selecting different tables.
 	@FXML
 	private RadioButton courseRadio;
 	@FXML
@@ -106,7 +110,11 @@ public class AdministerCenterController {
 	@FXML
 	private ToggleGroup toggleGroupSearch;
 
-	//search Field for generate Database.
+	/*
+	 * search Field for generate Database.
+	 * search field support name and code for course,
+	 * instructor name and ID, student name and ID.
+	 */
 	@SuppressWarnings("unchecked")
 	public void searchButtonListerner() throws ClassNotFoundException, SQLException{
 		String search = searchField.getText();
@@ -314,6 +322,7 @@ public class AdministerCenterController {
 		RegisterJDBC.excuteSQL(SQLArea.getText());
 	}
 
+	// Return an Observable list which will be add to the table view and display.
 	ObservableList<Student> getStudent() throws SQLException{
 		ObservableList<Student> students = FXCollections.observableArrayList();
 		while(RegisterJDBC.result.next()){

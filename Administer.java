@@ -1,5 +1,5 @@
 package Register;
-
+//administer class for test case use only.
 public class Administer {
 	final String NAME = "name";
 	final String PASSWORD = "pass";

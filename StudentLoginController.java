@@ -1,5 +1,8 @@
 package Register;
 
+/*
+ * Student login controller handle for login.
+ */
 import java.io.IOException;
 
 import javafx.fxml.FXML;

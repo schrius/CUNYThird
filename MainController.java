@@ -8,7 +8,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-
+/*
+ * Main screen controller for handling login selection.
+ */
 public class MainController {
 	Parent parent;
 	RegisterJDBC registerJDBC = new RegisterJDBC();

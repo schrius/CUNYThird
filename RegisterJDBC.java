@@ -5,7 +5,10 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+/*
+ * JDBC class connect to SQL.
+ * responsible for connection, statement execution.
+ */
 public class RegisterJDBC {
 	static final String JDBC_DRIVER = "oracle.jdbc.driver.OracleDriver";
 	static final String DB_URL = "jdbc:oracle:thin:@DathanPC:1521:xe";

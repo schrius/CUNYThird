@@ -1,5 +1,7 @@
 package Register;
-
+/*
+ * Administer login windows controller.
+ */
 import java.io.IOException;
 
 import javafx.fxml.FXML;

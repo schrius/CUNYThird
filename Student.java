@@ -1,5 +1,7 @@
 package Register;
-
+/*
+ * Student class for student field
+ */
 public class Student {
 	String studentId;
 	String firstName;
