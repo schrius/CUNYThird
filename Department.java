@@ -5,8 +5,8 @@ package Register;
  */
 public class Department {
 	public static enum depart{ACCOUNTING, BUSINESS, FINANCE} 
-	//final static String DEPTNO[] = {""};
-	final static String DEPTNAME[] = {""};
+	//final static String DEPTNO[] = {"ACCT01"};
+	final static String DEPTNAME[] = {"Accouting"};
 	String departmentNumber;
 	String departmentName;
 	int staff;
