@@ -6,16 +6,9 @@
 <?import javafx.scene.layout.*?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Register.StudentCenterController">
-   <children>
-      <HBox layoutX="3.0" layoutY="1.0" prefHeight="34.0" prefWidth="600.0">
-         <children>
-            <Label text="Search" />
-            <TextField fx:id="searchField" promptText="Course" />
-            <Button fx:id="searchButton" mnemonicParsing="false" text="Search" />
-         </children>
-      </HBox>
-      <TableView layoutX="14.0" layoutY="57.0" prefHeight="400.0" prefWidth="680.0">
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Register.StudentCenterController">
+   <center>
+      <TableView fx:id="table" prefHeight="400.0" prefWidth="680.0" BorderPane.alignment="CENTER">
         <columns>
           <TableColumn prefWidth="75.0" text="Class" />
           <TableColumn prefWidth="75.0" text="Unit" />
@@ -29,7 +22,9 @@
             <TableColumn prefWidth="75.0" text="Capacity" />
         </columns>
       </TableView>
-      <HBox layoutX="14.0" layoutY="457.0" prefHeight="130.0" prefWidth="550.0" spacing="10.0">
+   </center>
+   <bottom>
+      <HBox prefHeight="130.0" prefWidth="550.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                <children>
@@ -85,11 +80,20 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </HBox>
-            <Button fx:id="paymentButton" mnemonicParsing="false" text="Make a payment" />
+            <Button fx:id="paymentButton" mnemonicParsing="false" onAction="#paymentListener" text="Make a payment" />
          </children>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>
       </HBox>
-   </children>
-</AnchorPane>
+   </bottom>
+   <top>
+      <HBox prefHeight="34.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Search" />
+            <TextField fx:id="searchField" promptText="Course" />
+            <Button fx:id="searchButton" mnemonicParsing="false" onAction="#searchListener" text="Search" />
+         </children>
+      </HBox>
+   </top>
+</BorderPane>

@@ -1,131 +1,129 @@
 package Register;
+
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 /*
  * Course class, use for table view, store data in SQL
  */
-public class Course {
-	String courseCode;
-	String courseName;
-	String description;
-	String semester;
-	String room;
-	String startDate;
-	String endDate;
-	String days;
-	String time;
-	String requiredCourse;
-	double units;
-	String instructorFirstName;
-	String instructorLastName;
-	String department;
+public class Course implements TableEntry{
+	StringProperty courseCode = new SimpleStringProperty();
+	StringProperty courseName = new SimpleStringProperty();
+	StringProperty description = new SimpleStringProperty();
+	StringProperty semester = new SimpleStringProperty();
+	StringProperty room = new SimpleStringProperty();
+	StringProperty startDate = new SimpleStringProperty();
+	StringProperty endDate = new SimpleStringProperty();
+	StringProperty days = new SimpleStringProperty();
+	StringProperty time = new SimpleStringProperty();
+	StringProperty requiredCourse = new SimpleStringProperty();
+	DoubleProperty units = new SimpleDoubleProperty();
+	StringProperty instructor = new SimpleStringProperty();
+	StringProperty department = new SimpleStringProperty();
 	
 	public Course() {
 
 	}
 
 	public Course(String courseCode, String courseName, String description, String semester, String room,
-			String startDate, String endDate, String time, String days, double units, String instructorFirstName, 
-			String instructorLastName, String department, String requiredCourse) {
+			String startDate, String endDate, String time, String days, double units, String instructor,
+			String department, String requiredCourse) {
 		super();
-		this.courseCode = courseCode;
-		this.courseName = courseName;
-		this.description = description;
-		this.semester = semester;
-		this.room = room;
-		this.startDate = startDate;
-		this.endDate = endDate;
-		this.time = time;
-		this.days = days;
-		this.units = units;
-		this.instructorFirstName = instructorFirstName;
-		this.instructorLastName = instructorLastName;
-		this.department = department;
-		this.requiredCourse = requiredCourse;
+		this.courseCode.set(courseCode);
+		this.courseName.set(courseName);
+		this.description.set(description);
+		this.semester.set(semester);
+		this.room.set(room);
+		this.startDate.set(startDate);
+		this.endDate.set(endDate);
+		this.time.set(time);
+		this.days.set(days);
+		this.units.set(units);
+		this.instructor.set(instructor);
+		this.department.set(department);
+		this.requiredCourse.set(requiredCourse);
 	}
 	public String getCourseCode() {
-		return courseCode;
+		return courseCode.get();
 	}
 	public void setCourseCode(String courseCode) {
-		this.courseCode = courseCode;
+		this.courseCode.set(courseCode);
 	}
 	public String getCourseName() {
-		return courseName;
+		return courseName.get();
 	}
 	public void setCourseName(String courseName) {
-		this.courseName = courseName;
+		this.courseName.set(courseName);
 	}
 	public String getDescription() {
-		return description;
+		return description.get();
 	}
 	public void setDescription(String description) {
-		this.description = description;
+		this.description.set(description);
 	}
 	public String getSemester() {
-		return semester;
+		return semester.get();
 	}
 	public void setSemester(String semester) {
-		this.semester = semester;
+		this.semester.set(semester);
 	}
 	public String getRoom() {
-		return room;
+		return room.get();
 	}
 	public void setRoom(String room) {
-		this.room = room;
+		this.room.set(room);
 	}
 	public String getStartDate() {
-		return startDate;
+		return startDate.get();
 	}
 	public void setStartDate(String startDate) {
-		this.startDate = startDate;
+		this.startDate.set(startDate);
 	}
 	public String getEndDate() {
-		return endDate;
+		return endDate.get();
 	}
 	public void setEndDate(String endDate) {
-		this.endDate = endDate;
+		this.endDate.set(endDate);
 	}
 	public String getTime() {
-		return time;
+		return time.get();
 	}
 	public void setTime(String time) {
-		this.time = time;
+		this.time.set(time);
 	}
 	public String getDays() {
-		return days;
+		return days.get();
 	}
 
 	public void setDays(String days) {
-		this.days = days;
+		this.days.set(days);
 	}
 
 	public double getUnits() {
-		return units;
+		return units.get();
 	}
 	public void setUnits(double units) {
-		this.units = units;
+		this.units.set(units);
 	}
-	public String getInstructorFirstName() {
-		return instructorFirstName;
+	public String getInstructor() {
+		return instructor.get();
 	}
-	public void setInstructorFirstName(String instructorFirstName) {
-		this.instructorFirstName = instructorFirstName;
+	public void setInstructor(String instructor) {
+		this.instructor.set(instructor);
 	}
-	public String getInstructorLastName() {
-		return instructorLastName;
-	}
-	public void setInstructorLastName(String instructorLastName) {
-		this.instructorLastName = instructorLastName;
-	}
+
 	public String getDepartment() {
-		return department;
+		return department.get();
 	}
 	public void setDepartment(String department) {
-		this.department = department;
+		this.department.set(department);
 	}
 	public String getRequiredCourse() {
-		return requiredCourse;
+		return requiredCourse.get();
 	}
 	public void setRequiredCourse(String requiredCourse){
-		this.requiredCourse = requiredCourse;
+		this.requiredCourse.set(requiredCourse);
 	}
-	
 }

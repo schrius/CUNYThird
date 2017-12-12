@@ -1,25 +1,27 @@
 package Register;
 /*
  * instructor class, data about the instructors. InstructorID is a foreign key for courses.
- */
-public class Instructor {
-	String instructorId;
-	String firstName;
-	String lastName;
-	String department;
-	String office;
-	String phone;
-	String hireDate;
-	double salary;
-	
-	public Instructor(){
-		
-	}
+*/
 
-	public Instructor(String instructorId, String firstName, String lastName, String department, String office,
-			String phone, String hireDate, double salary) {
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
+public class Instructor implements TableEntry{
+	private StringProperty instructorID = new SimpleStringProperty();
+	private StringProperty  firstName = new SimpleStringProperty();;
+	private StringProperty  lastName = new SimpleStringProperty();;
+	private StringProperty  department = new SimpleStringProperty();;
+	private StringProperty  office = new SimpleStringProperty();;
+	private StringProperty  phone = new SimpleStringProperty();;
+	private StringProperty  hireDate = new SimpleStringProperty();;
+	private DoubleProperty  salary = new SimpleDoubleProperty();;
+	public Instructor(StringProperty instructorID, StringProperty firstName, StringProperty lastName,
+			StringProperty department, StringProperty office, StringProperty phone, StringProperty hireDate,
+			DoubleProperty salary) {
 		super();
-		this.instructorId = instructorId;
+		this.instructorID = instructorID;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.department = department;
@@ -28,55 +30,63 @@ public class Instructor {
 		this.hireDate = hireDate;
 		this.salary = salary;
 	}
-
-	public String getInstructorId() {
-		return instructorId;
+	public Instructor(String instructorID, String firstName, String lastName, String department, String office,
+			String phone, String hireDate, double salary) {
+		this.instructorID.set(instructorID);
+		this.firstName.set(firstName);
+		this.lastName.set(lastName);
+		this.department.set(department);
+		this.office.set(office);
+		this.phone.set(phone);
+		this.hireDate.set(hireDate);
+		this.salary.set(salary);
 	}
-	public void setInstructorId(String instructorId) {
-		this.instructorId = instructorId;
+	public String getInstructorID() {
+		return instructorID.get();
+	}
+	public void setInstructorID(String instructorID) {
+		this.instructorID.set(instructorID);
 	}
 	public String getFirstName() {
-		return firstName;
+		return firstName.get();
 	}
 	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+		this.firstName.set(firstName);;
 	}
 	public String getLastName() {
-		return lastName;
+		return lastName.get();
 	}
 	public void setLastName(String lastName) {
-		this.lastName = lastName;
+		this.lastName.set(lastName);;
 	}
 	public String getDepartment() {
-		return department;
+		return department.get();
 	}
 	public void setDepartment(String department) {
-		this.department = department;
+		this.department.set(department);;
 	}
 	public String getOffice() {
-		return office;
+		return office.get();
 	}
 	public void setOffice(String office) {
-		this.office = office;
+		this.office.set(office);
 	}
 	public String getPhone() {
-		return phone;
+		return phone.get();
 	}
 	public void setPhone(String phone) {
-		this.phone = phone;
+		this.phone.set(phone);
 	}
 	public String getHireDate() {
-		return hireDate;
+		return hireDate.get();
 	}
-
 	public void setHireDate(String hireDate) {
-		this.hireDate = hireDate;
+		this.hireDate.set(hireDate);;
 	}
 	public double getSalary() {
-		return salary;
+		return salary.get();
 	}
-
 	public void setSalary(double salary) {
-		this.salary = salary;
-	}	
+		this.salary.set(salary);;
+	}
 }

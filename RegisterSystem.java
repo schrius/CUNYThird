@@ -18,7 +18,8 @@ public class RegisterSystem extends Application{
 		window = stage;
 		Parent parent;
 		try {
-		//	RegisterJDBC.connect();
+			RegisterJDBC.connect();
+			
 			parent = FXMLLoader.load(getClass().getResource("MainFX.fxml"));
 			Scene scene = new Scene(parent);
 
@@ -29,9 +30,9 @@ public class RegisterSystem extends Application{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	/*	catch (ClassNotFoundException e) {
+		catch (ClassNotFoundException e) {
 			e.printStackTrace();
-		}*/
+		}
 	}
 	public static void main(String[] args) {
 		launch(args);

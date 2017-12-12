@@ -17,6 +17,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.BorderPane;
 public class AdministerCenterController {
 	@FXML
 	private TextField searchField;
@@ -88,7 +89,7 @@ public class AdministerCenterController {
 	private RadioButton studentRadio;
 
 	@FXML
-	private TableView<Student> table;
+	private TableView<? extends TableEntry> table;
 
 	// SQL pane
 	@FXML
@@ -109,6 +110,9 @@ public class AdministerCenterController {
 	private Button deleteStudentButton;
 	@FXML
 	private ToggleGroup toggleGroupSearch;
+	
+	@FXML
+	private BorderPane borderPane;
 
 	/*
 	 * search Field for generate Database.
@@ -163,13 +167,9 @@ public class AdministerCenterController {
 			requiredCourseColumn.setMinWidth(100);
 			requiredCourseColumn.setCellValueFactory(new PropertyValueFactory<>("requiredCourse"));
 			
-			TableColumn<Course, String> InstructorFirstNameColumn = new TableColumn<>("Instructor FirstName");
-			InstructorFirstNameColumn.setMinWidth(100);
-			InstructorFirstNameColumn.setCellValueFactory(new PropertyValueFactory<>("instructorFirstName"));
-			
-			TableColumn<Course, String> instructorLastNameColumn = new TableColumn<>("Instructor LastName");
-			instructorLastNameColumn.setMinWidth(100);
-			instructorLastNameColumn.setCellValueFactory(new PropertyValueFactory<>("instructorLastName"));
+			TableColumn<Course, String> instructorColumn = new TableColumn<>("Instructor");
+			instructorColumn.setMinWidth(100);
+			instructorColumn.setCellValueFactory(new PropertyValueFactory<>("instructor"));
 			
 			TableColumn<Course, String> descriptionColumn = new TableColumn<>("Description");
 			descriptionColumn.setMinWidth(100);
@@ -178,18 +178,27 @@ public class AdministerCenterController {
 			TableColumn<Course, Double> courseUnitsColumn = new TableColumn<>("Units");
 			courseUnitsColumn.setMinWidth(100);
 			courseUnitsColumn.setCellValueFactory(new PropertyValueFactory<>("units"));
+			
+			TableView<Course> courseTable = new TableView<>();
+			courseTable.setItems(getCourse());
+			courseTable.getColumns().addAll(courseCodeColumn, CourseNameColumn, semesterColumn, roomColumn,
+					departmentColumn, startDateColumn, endDateColumn, daysColumn, timeColumn,
+					requiredCourseColumn, instructorColumn, descriptionColumn, courseUnitsColumn);
+			this.table = courseTable;
+			borderPane.setCenter(courseTable);
+			System.out.println("Search student..");
 		}
 		else if(instructorRadio.isSelected()){
 			sql = "SELECT * FROM Instructor WHERE FirstName = '" + search + "' OR " + "LastName = '" + search
-					+ "' OR instructorID = '" + search + "'";
+					+ "' OR InstructorID = '" + search + "'";
 			RegisterJDBC.excuteSQL(sql);
 			TableColumn<Instructor, String> instructorIDColumn = new TableColumn<>("InstructorID");
 			instructorIDColumn.setMinWidth(100);
-			instructorIDColumn.setCellValueFactory(new PropertyValueFactory<>("InstructorID"));
+			instructorIDColumn.setCellValueFactory(new PropertyValueFactory<>("instructorID"));
 			
 			TableColumn<Instructor, String> instructorFirstNameColumn = new TableColumn<>("FirstName");
 			instructorFirstNameColumn.setMinWidth(100);
-			instructorFirstNameColumn.setCellValueFactory(new PropertyValueFactory<>("LastName"));
+			instructorFirstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
 
 			TableColumn<Instructor, String> instructorLastNameColumn = new TableColumn<>("LastName");
 			instructorLastNameColumn.setMinWidth(100);
@@ -214,6 +223,13 @@ public class AdministerCenterController {
 			TableColumn<Instructor, Double> salaryColumn = new TableColumn<>("Salary");
 			salaryColumn.setMinWidth(100);
 			salaryColumn.setCellValueFactory(new PropertyValueFactory<>("salary"));
+			TableView<Instructor> instructorTable = new TableView<>();
+			instructorTable.setItems(getInstructor());
+			instructorTable.getColumns().addAll(instructorIDColumn, instructorFirstNameColumn, instructorLastNameColumn,
+					departmentLastNameColumn, officeColumn, phoneColumn, hireDateColumn, salaryColumn);
+			this.table = instructorTable;
+			borderPane.setCenter(instructorTable);
+			System.out.println("Search student..");
 			
 		}
 		else {
@@ -279,10 +295,13 @@ public class AdministerCenterController {
 
 			RegisterJDBC.excuteSQL(sql);
 
-			table.setItems(getStudent());
-			table.getColumns().addAll(idColumn, firstNameColumn, lastNameColumn, addressColumn,
+			TableView<Student> studentTable = new TableView<Student>();
+			studentTable.setItems(getStudent());
+			studentTable.getColumns().addAll(idColumn, firstNameColumn, lastNameColumn, addressColumn,
 					cityColumn, stateColumn, zipCodeColumn, SSNColumn, DOBColumn, majorColumn, genderColumn,
 					GPAColumn, totalUnitsColumn, dueTuitionColumn);
+			this.table = studentTable;
+			borderPane.setCenter(studentTable);
 			System.out.println("Search student..");
 		}
 	}
@@ -336,7 +355,7 @@ public class AdministerCenterController {
 				Double.parseDouble(RegisterJDBC.result.getString("FurtureTuition")),
 				Double.parseDouble(RegisterJDBC.result.getString("DueTuition")),
 				Double.parseDouble(RegisterJDBC.result.getString("TotalUnits")),
-				Double.parseDouble(RegisterJDBC.result.getString("CurrentUnit")),
+				Double.parseDouble(RegisterJDBC.result.getString("CurrentUnits")),
 				RegisterJDBC.result.getString("Password")));
 		}
 		System.out.println(students.size() + " Rows has been found");
@@ -373,12 +392,12 @@ public class AdministerCenterController {
 					RegisterJDBC.result.getString("Days"), 
 					RegisterJDBC.result.getString("Time"), 
 					Double.parseDouble(RegisterJDBC.result.getString("Units")), 
-					RegisterJDBC.result.getString("InstructorFirstName"), 
-					RegisterJDBC.result.getString("InstructorLastName"), 
+					RegisterJDBC.result.getString("Instructor"), 
 					RegisterJDBC.result.getString("Department"), 
 					RegisterJDBC.result.getString("RequiredCourse")));
 			System.out.println(courses.size() + " Rows has been found");
 		}
+		System.out.println(courses.size() + " Rows has been found");
 		return courses;
 	}
 }

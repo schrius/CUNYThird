@@ -1,153 +1,179 @@
 package Register;
+
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 /*
  * Student class for student field
  */
-public class Student {
-	String studentId;
-	String firstName;
-	String lastName;
-	String address;
-	String city;
-	String state;
-	String zipCode;
-	String socialSecurityNumber;
-	String DateOfBirth;
-	String Major;
-	String gender;
-	String password;
-	double GPA;
-	double furtureTuition;
-	double dueTuition;
-	double totalUnits;
-	double currentUnit;
-	public Student() {
-		
+public class Student implements TableEntry{
+	
+	StringProperty studentId = new SimpleStringProperty();
+	StringProperty firstName = new SimpleStringProperty();
+	StringProperty lastName = new SimpleStringProperty();
+	StringProperty address = new SimpleStringProperty();
+	StringProperty city = new SimpleStringProperty();
+	StringProperty state = new SimpleStringProperty();
+	StringProperty zipCode = new SimpleStringProperty();
+	StringProperty socialSecurityNumber = new SimpleStringProperty();
+	StringProperty DateOfBirth = new SimpleStringProperty();
+	StringProperty Major = new SimpleStringProperty();
+	StringProperty gender = new SimpleStringProperty();
+	StringProperty password = new SimpleStringProperty();
+	DoubleProperty GPA = new SimpleDoubleProperty();
+	DoubleProperty furtureTuition = new SimpleDoubleProperty();
+	DoubleProperty dueTuition = new SimpleDoubleProperty();
+	DoubleProperty totalUnits = new SimpleDoubleProperty();
+	DoubleProperty currentUnit = new SimpleDoubleProperty();
+	public Student(StringProperty studentId, StringProperty firstName, StringProperty lastName, StringProperty address,
+			StringProperty city, StringProperty state, StringProperty zipCode, StringProperty socialSecurityNumber,
+			StringProperty dateOfBirth, StringProperty major, StringProperty gender, StringProperty password,
+			DoubleProperty gPA, DoubleProperty furtureTuition, DoubleProperty dueTuition, DoubleProperty totalUnits,
+			DoubleProperty currentUnit) {
+		super();
+		this.studentId = studentId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.address = address;
+		this.city = city;
+		this.state = state;
+		this.zipCode = zipCode;
+		this.socialSecurityNumber = socialSecurityNumber;
+		DateOfBirth = dateOfBirth;
+		Major = major;
+		this.gender = gender;
+		this.password = password;
+		GPA = gPA;
+		this.furtureTuition = furtureTuition;
+		this.dueTuition = dueTuition;
+		this.totalUnits = totalUnits;
+		this.currentUnit = currentUnit;
 	}
 	public Student(String id, String firstName, String lastName, String address, String city,
 			String state, String zipCode, String socialSecurityNumber,
 			String DOB, String Major, String gender, double GPA, double furtureTuition,
 			double dueTuition, double totalUnits, double currentUnit, String password){
-		this.studentId = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.address = address;
-		this.city = city;
-		this.state = state;
-		this.zipCode = zipCode;
-		this.socialSecurityNumber = socialSecurityNumber;
-		this.DateOfBirth = DOB;
-		this.Major = Major;
-		this.gender = gender;
-		this.GPA = GPA;
-		this.furtureTuition = furtureTuition;
-		this.dueTuition = dueTuition;
-		this.totalUnits = totalUnits;
-		this.currentUnit = currentUnit;
-		this.password = password;
+		this.studentId.set(id);
+		this.firstName.set(firstName);
+		this.lastName.set(lastName);
+		this.address.set(address);
+		this.city.set(city);
+		this.state.set(state);
+		this.zipCode.set(zipCode);
+		this.socialSecurityNumber.set(socialSecurityNumber);
+		this.DateOfBirth.set(DOB);
+		this.Major.set(Major);
+		this.gender.set(gender);
+		this.GPA.set(GPA);
+		this.furtureTuition.set(furtureTuition);
+		this.dueTuition.set(dueTuition);
+		this.totalUnits.set(totalUnits);
+		this.currentUnit.set(currentUnit);
+		this.password.set(password);
 	}
 	public String getStudentId() {
-		return studentId;
+		return studentId.get();
 	}
 	public void setStudentId(String studentId) {
-		this.studentId = studentId;
+		this.studentId.set(studentId);;
 	}
 	public String getFirstName() {
-		return firstName;
+		return firstName.get();
 	}
 	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-	public String getLasttName() {
-		return lastName;
-	}
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
-	public String getCity() {
-		return city;
-	}
-	public void setCity(String city) {
-		this.city = city;
-	}
-	public String getState() {
-		return state;
-	}
-	public void setState(String state) {
-		this.state = state;
-	}
-	public String getZipCode() {
-		return zipCode;
-	}
-	public void setZipCode(String zipCode) {
-		this.zipCode = zipCode;
-	}
-	public String getSocialSecurityNumber() {
-		return socialSecurityNumber;
-	}
-	public void setSocialSecurityNumber(String socialSecurityNumber) {
-		this.socialSecurityNumber = socialSecurityNumber;
-	}
-	public String getDateOfBirth() {
-		return DateOfBirth;
-	}
-	public void setDateOfBirth(String dateOfBirth) {
-		DateOfBirth = dateOfBirth;
-	}
-	public String getMajor() {
-		return Major;
-	}
-	public void setMajor(String major) {
-		Major = major;
-	}
-	public String getGender() {
-		return gender;
-	}
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-	public double getGPA() {
-		return GPA;
-	}
-	public void setGPA(double GPA) {
-		this.GPA = GPA;
-	}
-	public double getFurtureTuition() {
-		return furtureTuition;
-	}
-	public void setFurtureTuition(double furtureTuition) {
-		this.furtureTuition = furtureTuition;
-	}
-	public double getDueTuition() {
-		return dueTuition;
-	}
-	public void setDueTuition(double dueTuition) {
-		this.dueTuition = dueTuition;
-	}
-	public double getTotalUnits() {
-		return totalUnits;
-	}
-	public void setTotalUnits(double totalUnits) {
-		this.totalUnits = totalUnits;
-	}
-	public double getCurrentUnit() {
-		return currentUnit;
-	}
-	public void setCurrentUnit(double currentUnit) {
-		this.currentUnit = currentUnit;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
+		this.firstName.set(firstName);
 	}
 	public String getLastName() {
-		return lastName;
-	}	
+		return lastName.get();
+	}
+	public void setLastName(String lastName) {
+		this.lastName.set(lastName);
+	}
+	public String getAddress() {
+		return address.get();
+	}
+	public void setAddress(String address) {
+		this.address.set(address);
+	}
+	public String getCity() {
+		return city.get();
+	}
+	public void setCity(String city) {
+		this.city.set(city);
+	}
+	public String getState() {
+		return state.get();
+	}
+	public void setState(String state) {
+		this.state.set(state);
+	}
+	public String getZipCode() {
+		return zipCode.get();
+	}
+	public void setZipCode(String zipCode) {
+		this.zipCode.set(zipCode);
+	}
+	public String getSocialSecurityNumber() {
+		return socialSecurityNumber.get();
+	}
+	public void setSocialSecurityNumber(String socialSecurityNumber) {
+		this.socialSecurityNumber.set(socialSecurityNumber);
+	}
+	public String getDateOfBirth() {
+		return DateOfBirth.get();
+	}
+	public void setDateOfBirth(String dateOfBirth) {
+		DateOfBirth.set(dateOfBirth);
+	}
+	public String getMajor() {
+		return Major.get();
+	}
+	public void setMajor(String major) {
+		this.Major.set(major);
+	}
+	public String getGender() {
+		return gender.get();
+	}
+	public void setGender(String gender) {
+		this.gender.set(gender);
+	}
+	public double getGPA() {
+		return GPA.get();
+	}
+	public void setGPA(double GPA) {
+		this.GPA.set(GPA);
+	}
+	public double getFurtureTuition() {
+		return furtureTuition.get();
+	}
+	public void setFurtureTuition(double furtureTuition) {
+		this.furtureTuition.set(furtureTuition);
+	}
+	public double getDueTuition() {
+		return dueTuition.get();
+	}
+	public void setDueTuition(double dueTuition) {
+		this.dueTuition.set(dueTuition);
+	}
+	public double getTotalUnits() {
+		return totalUnits.get();
+	}
+	public void setTotalUnits(double totalUnits) {
+		this.totalUnits.set(totalUnits);
+	}
+	public double getCurrentUnit() {
+		return currentUnit.get();
+	}
+	public void setCurrentUnit(double currentUnit) {
+		this.currentUnit.set(currentUnit);
+	}
+	public String getPassword() {
+		return password.get();
+	}
+	public void setPassword(String password) {
+		this.password.set(password);
+	}
 }
+
