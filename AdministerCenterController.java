@@ -248,6 +248,10 @@ public class AdministerCenterController {
 			TableColumn<Student, String> lastNameColumn = new TableColumn<>("LastName");
 			lastNameColumn.setMinWidth(100);
 			lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+			
+			TableColumn<Student, String> emailColumn = new TableColumn<>("Email");
+			emailColumn.setMinWidth(100);
+			emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
 
 			TableColumn<Student, String> addressColumn = new TableColumn<>("Address");
 			addressColumn.setMinWidth(100);
@@ -297,7 +301,7 @@ public class AdministerCenterController {
 
 			TableView<Student> studentTable = new TableView<Student>();
 			studentTable.setItems(getStudent());
-			studentTable.getColumns().addAll(idColumn, firstNameColumn, lastNameColumn, addressColumn,
+			studentTable.getColumns().addAll(idColumn, firstNameColumn, lastNameColumn,emailColumn, addressColumn,
 					cityColumn, stateColumn, zipCodeColumn, SSNColumn, DOBColumn, majorColumn, genderColumn,
 					GPAColumn, totalUnitsColumn, dueTuitionColumn);
 			this.table = studentTable;
@@ -346,7 +350,9 @@ public class AdministerCenterController {
 		ObservableList<Student> students = FXCollections.observableArrayList();
 		while(RegisterJDBC.result.next()){
 		students.add(new Student(RegisterJDBC.result.getString("StudentID"), RegisterJDBC.result.getString("FirstName"),
-				RegisterJDBC.result.getString("LastNAME"), RegisterJDBC.result.getString("Address"),
+				RegisterJDBC.result.getString("LastNAME"), 
+				RegisterJDBC.result.getString("Email"),
+				RegisterJDBC.result.getString("Address"),
 				RegisterJDBC.result.getString("City"), RegisterJDBC.result.getString("State"),
 				RegisterJDBC.result.getString("ZipCode"), RegisterJDBC.result.getString("SSN"),
 				RegisterJDBC.result.getString("DOB"), RegisterJDBC.result.getString("Major"),

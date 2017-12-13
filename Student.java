@@ -13,6 +13,7 @@ public class Student implements TableEntry{
 	StringProperty studentId = new SimpleStringProperty();
 	StringProperty firstName = new SimpleStringProperty();
 	StringProperty lastName = new SimpleStringProperty();
+	StringProperty email = new SimpleStringProperty();
 	StringProperty address = new SimpleStringProperty();
 	StringProperty city = new SimpleStringProperty();
 	StringProperty state = new SimpleStringProperty();
@@ -27,7 +28,7 @@ public class Student implements TableEntry{
 	DoubleProperty dueTuition = new SimpleDoubleProperty();
 	DoubleProperty totalUnits = new SimpleDoubleProperty();
 	DoubleProperty currentUnit = new SimpleDoubleProperty();
-	public Student(StringProperty studentId, StringProperty firstName, StringProperty lastName, StringProperty address,
+	public Student(StringProperty studentId, StringProperty firstName, StringProperty lastName, StringProperty email, StringProperty address,
 			StringProperty city, StringProperty state, StringProperty zipCode, StringProperty socialSecurityNumber,
 			StringProperty dateOfBirth, StringProperty major, StringProperty gender, StringProperty password,
 			DoubleProperty gPA, DoubleProperty furtureTuition, DoubleProperty dueTuition, DoubleProperty totalUnits,
@@ -36,6 +37,7 @@ public class Student implements TableEntry{
 		this.studentId = studentId;
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.email = email;
 		this.address = address;
 		this.city = city;
 		this.state = state;
@@ -51,13 +53,14 @@ public class Student implements TableEntry{
 		this.totalUnits = totalUnits;
 		this.currentUnit = currentUnit;
 	}
-	public Student(String id, String firstName, String lastName, String address, String city,
+	public Student(String id, String firstName, String lastName, String email, String address, String city,
 			String state, String zipCode, String socialSecurityNumber,
 			String DOB, String Major, String gender, double GPA, double furtureTuition,
 			double dueTuition, double totalUnits, double currentUnit, String password){
 		this.studentId.set(id);
 		this.firstName.set(firstName);
 		this.lastName.set(lastName);
+		this.email.set(email);
 		this.address.set(address);
 		this.city.set(city);
 		this.state.set(state);
@@ -90,6 +93,12 @@ public class Student implements TableEntry{
 	}
 	public void setLastName(String lastName) {
 		this.lastName.set(lastName);
+	}
+	public String getEmail() {
+		return email.get();
+	}
+	public void setEmail(String email) {
+		this.email.set(email);
 	}
 	public String getAddress() {
 		return address.get();

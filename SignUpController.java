@@ -1,5 +1,5 @@
 package Register;
-import java.lang.reflect.GenericDeclaration;
+
 /*
  * Sign up window controller
  * getting all data from textfield and try to sign up
@@ -8,8 +8,6 @@ import java.lang.reflect.GenericDeclaration;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-import java.util.zip.ZipEntry;
-
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
