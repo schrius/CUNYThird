@@ -134,7 +134,7 @@
             <HBox alignment="CENTER" layoutX="15.0" layoutY="253.0" spacing="3.0">
                <children>
                   <Label prefWidth="80.0" text="State:" />
-                  <TextField fx:id="StatesField" promptText="State">
+                  <TextField fx:id="stateField" promptText="State">
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>

@@ -4,9 +4,6 @@ package Register;
  * It served as foreign key for majors, course and instructor in the database.
  */
 public class Department {
-	public static enum depart{ACCOUNTING, BUSINESS, FINANCE} 
-	//final static String DEPTNO[] = {"ACCT01"};
-	final static String DEPTNAME[] = {"Accouting"};
 	String departmentNumber;
 	String departmentName;
 	int staff;

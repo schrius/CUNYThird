@@ -1,5 +1,4 @@
 package Register;
-import java.lang.reflect.GenericDeclaration;
 /*
  * Sign up window controller
  * getting all data from textfield and try to sign up
@@ -8,7 +7,6 @@ import java.lang.reflect.GenericDeclaration;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-import java.util.zip.ZipEntry;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -99,7 +97,7 @@ public class SignUpController implements Initializable {
 			genderLabel.setTextFill(Paint.valueOf("#ff471a"));
 			complete = false;
 		}
-		if(!emailField.getText().contains("@.")){
+		if(!emailField.getText().contains("@")){
 			emailLabel.setTextFill(Paint.valueOf("#ff471a"));
 			complete = false;
 		}
@@ -112,30 +110,31 @@ public class SignUpController implements Initializable {
 			complete = false;
 		}
 		if(passwordField.getText().equals("") || passwordField.getText() == null){
-			lastNameLabel.setTextFill(Paint.valueOf("#ff471a"));
+			passwordLabel.setTextFill(Paint.valueOf("#ff471a"));
 			complete = false;
 		}
-		if(passwordField.getText().equals(retypeField.getText())){
-			lastNameLabel.setTextFill(Paint.valueOf("#ff471a"));
+		if(!passwordField.getText().equals(retypeField.getText())){
+			retypeLabel.setTextFill(Paint.valueOf("#ff471a"));
 			complete = false;
 		}
-		if(majorBox.getSelectionModel() != null){
-			lastNameLabel.setTextFill(Paint.valueOf("#ff471a"));
+		if(majorBox.getValue() == null){
+			majorLabel.setTextFill(Paint.valueOf("#ff471a"));
 			complete = false;
 		}
 		if(SSNField.getText().equals("") || SSNField.getText() == null){
 			SSNLabel.setTextFill(Paint.valueOf("#ff471a"));
 			complete = false;
 		}
-		if(datePicker.getValue() != null){
+		if(datePicker.getValue() == null){
 			DOBLabel.setTextFill(Paint.valueOf("#ff471a"));
 			complete = false;
 		}
 		if(complete){
 		submitButton.setText("Processing...");
-		String sql = "INSERT INTO Student(FirstName, LastName, Gender, Email, Password, Address, City"
-				+ ", State, ZipCode, Major, SSN, DOB ) VALUES('" + firstNameField.getText() +"', '" +
-				 lastNameField.getText() +"'," +
+		String sql = "INSERT INTO Student(StudentID, FirstName, LastName, Gender, Email, Password, Address, City"
+				+ ", State, ZipCode, Major, SSN, DOB ) VALUES(seq_student," + 
+				 "'" + firstNameField.getText() +"', "+ 
+				 "'" + lastNameField.getText() +"'," +
 				 "'" + gender + "'," + 
 				 "'" + emailField.getText() + "'," +
 				 "'" + passwordField.getText() + "'," +
