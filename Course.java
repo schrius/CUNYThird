@@ -22,15 +22,10 @@ public class Course implements TableEntry{
 	DoubleProperty units = new SimpleDoubleProperty();
 	StringProperty instructor = new SimpleStringProperty();
 	StringProperty department = new SimpleStringProperty();
-	
-	public Course() {
-
-	}
 
 	public Course(String courseCode, String courseName, String description, String semester, String room,
 			String startDate, String endDate, String time, String days, double units, String instructor,
 			String department, String requiredCourse) {
-		super();
 		this.courseCode.set(courseCode);
 		this.courseName.set(courseName);
 		this.description.set(description);

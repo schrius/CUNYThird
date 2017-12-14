@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<HBox spacing="5.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Register.AddCourseController">
+   <children>
+      <VBox spacing="5.0">
+         <children>
+            <TextField fx:id="courseID" promptText="Course Code" />
+            <TextField fx:id="courseName" promptText="Course Name" />
+            <TextField fx:id="courseDescription" promptText="Description" />
+            <TextField fx:id="courseSemester" layoutX="10.0" layoutY="10.0" promptText="Semester" />
+            <TextField fx:id="courseRoom" layoutX="10.0" layoutY="35.0" promptText="Room" />
+            <DatePicker fx:id="courseStartDate" promptText="Start Date" />
+            <DatePicker fx:id="courseEndDate" promptText="End Date" />
+            <TextField fx:id="courseTime" layoutX="10.0" layoutY="135.0" promptText="Time" />
+         </children>
+         <padding>
+            <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+         </padding>
+         <HBox.margin>
+            <Insets />
+         </HBox.margin>
+      </VBox>
+      <VBox alignment="CENTER" spacing="5.0">
+         <children>
+            <TextField fx:id="courseRequirement" promptText="Requirement" />
+            <TextField fx:id="courseUnit" layoutX="10.0" layoutY="10.0" promptText="Unit" />
+            <TextField fx:id="instructorID" layoutX="10.0" layoutY="60.0" promptText="Instructor ID" />
+            <ComboBox fx:id="department" prefWidth="150.0" promptText="Department" />
+            <TextField fx:id="courseDays" layoutX="10.0" layoutY="85.0" promptText="Days" />
+            <TextField fx:id="capacity" layoutX="10.0" layoutY="60.0" promptText="Capacity" />
+            <TextField fx:id="currentCapacity" layoutX="10.0" layoutY="110.0" promptText="currentCapacity" />
+            <Button fx:id="confirm" mnemonicParsing="false" text="Confirm" />
+         </children>
+         <padding>
+            <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+         </padding>
+      </VBox>
+   </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+</HBox>

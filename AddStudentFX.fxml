@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Register.AddStudentController">
+   <children>
+      <VBox alignment="CENTER" spacing="5.0">
+         <children>
+            <TextField fx:id="studentID" promptText="StudentID" />
+            <TextField fx:id="firstName" promptText="First Name" />
+            <TextField fx:id="lastName" layoutX="10.0" layoutY="35.0" promptText="Last Name" />
+            <TextField fx:id="email" layoutX="10.0" layoutY="10.0" promptText="Email" />
+            <TextField fx:id="address" layoutX="10.0" layoutY="60.0" promptText="Address" />
+            <TextField fx:id="city" layoutX="10.0" layoutY="85.0" promptText="City" />
+            <TextField fx:id="state" layoutX="10.0" layoutY="85.0" promptText="State" />
+            <TextField fx:id="zipCode" layoutX="10.0" layoutY="160.0" promptText="ZipCode" />
+            <TextField fx:id="SSN" layoutX="10.0" layoutY="160.0" promptText="SSN" />
+            <Button fx:id="submit" mnemonicParsing="false" text="Submit" />
+         </children>
+         <HBox.margin>
+            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+         </HBox.margin>
+         <padding>
+            <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+         </padding>
+      </VBox>
+      <VBox spacing="5.0">
+         <children>
+            <DatePicker fx:id="DOB" promptText="DOB" />
+            <ComboBox fx:id="major" prefWidth="150.0" promptText="Major" />
+            <HBox spacing="5.0">
+               <children>
+                  <RadioButton fx:id="maleRadioButton" mnemonicParsing="false" selected="true" text="Male">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="genderToggle" />
+                     </toggleGroup></RadioButton>
+                  <RadioButton fx:id="femaleRadioButton" mnemonicParsing="false" text="Female" toggleGroup="$genderToggle" />
+               </children>
+               <padding>
+                  <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </VBox.margin>
+            </HBox>
+            <TextField fx:id="password" layoutX="10.0" layoutY="35.0" promptText="Password" />
+            <TextField fx:id="GPA" layoutX="10.0" layoutY="10.0" promptText="GPA" />
+            <TextField fx:id="furtureTuition" layoutX="10.0" layoutY="85.0" promptText="Furture Tuition" />
+            <TextField fx:id="dueTuition" layoutX="10.0" layoutY="60.0" promptText="Due Tuition" />
+            <TextField fx:id="totalUnits" layoutX="10.0" layoutY="135.0" promptText="Total Units" />
+            <TextField fx:id="currentUnits" layoutX="10.0" layoutY="110.0" promptText="Current Units" />
+         </children>
+         <padding>
+            <Insets top="3.0" />
+         </padding>
+         <HBox.margin>
+            <Insets top="2.0" />
+         </HBox.margin>
+      </VBox>
+   </children>
+</HBox>

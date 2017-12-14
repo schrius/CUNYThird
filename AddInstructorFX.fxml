@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.HBox?>
+
+
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Register.AddInstructorController">
+   <children>
+      <VBox alignment="CENTER" spacing="5.0">
+         <children>
+            <TextField fx:id="instrucotrID" promptText="Instructor ID" />
+            <TextField fx:id="firstName" promptText="First Name" />
+            <TextField fx:id="lastName" layoutX="10.0" layoutY="10.0" promptText="Last Name" />
+            <ComboBox fx:id="department" />
+            <TextField fx:id="office" layoutX="10.0" layoutY="10.0" promptText="Office" />
+            <TextField fx:id="phone" layoutX="10.0" layoutY="85.0" promptText="Phone" />
+            <DatePicker fx:id="hireDate" promptText="Hire Date" />
+            <TextField fx:id="salary" layoutX="10.0" layoutY="35.0" promptText="Salary" />
+            <Button mnemonicParsing="false" text="Confirm" />
+         </children>
+         <padding>
+            <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+         </padding>
+         <VBox.margin>
+            <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+         </VBox.margin>
+      </VBox>
+   </children>
+</VBox>

@@ -4,6 +4,9 @@ package Register;
  * It served as foreign key for majors, course and instructor in the database.
  */
 public class Department {
+	final String[] department = {"Accounting", "Anthropology", "Art", "Business Management", "Biology", "Chemistry",
+			"Comp Info Science", "Economics", "English", "History", "Mathematics", "Philosophy", "Physics", 
+	"Psychology", "Sociology"}; 
 	String departmentNumber;
 	String departmentName;
 	int staff;
@@ -37,6 +40,9 @@ public class Department {
 	}
 	public void setDepartmentNumber(String departmentNumber) {
 		this.departmentNumber = departmentNumber;
+	}
+	public String[] getDepartment() {
+		return department;
 	}
 
 }

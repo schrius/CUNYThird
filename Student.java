@@ -184,5 +184,12 @@ public class Student implements TableEntry{
 	public void setPassword(String password) {
 		this.password.set(password);
 	}
+// these method are used for binding with label in real time.
+	public DoubleProperty getDue() {
+		return dueTuition;
+	}
+	public DoubleProperty getFurtureDue() {
+		return furtureTuition;
+	}
 }
 

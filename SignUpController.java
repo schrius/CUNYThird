@@ -17,6 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
@@ -37,6 +38,8 @@ public class SignUpController implements Initializable {
 	
 	@FXML
 	private RadioButton femaleRadioButton;
+	@FXML
+	private ToggleGroup genderToggle;
 	@FXML
 	private TextField emailField;
 	@FXML
@@ -132,7 +135,7 @@ public class SignUpController implements Initializable {
 		if(complete){
 		submitButton.setText("Processing...");
 		String sql = "INSERT INTO Student(StudentID, FirstName, LastName, Gender, Email, Password, Address, City"
-				+ ", State, ZipCode, Major, SSN, DOB ) VALUES(seq_student," + 
+				+ ", State, ZipCode, Major, SSN, DOB ) VALUES(seq_student.nextval," + 
 				 "'" + firstNameField.getText() +"', "+ 
 				 "'" + lastNameField.getText() +"'," +
 				 "'" + gender + "'," + 
@@ -144,15 +147,15 @@ public class SignUpController implements Initializable {
 				 "'" + zipCodeField.getText() + "'," +
 				 "'" + majorBox.getValue() + "'," +
 				 "'" + SSNField.getText() + "'," +
-				 "'" + datePicker.getValue() + "')";
+				 "TO_DATE('" + datePicker.getValue() + "', 'YYYY/MM/DD'))";
 		RegisterJDBC.excuteSQL(sql);
-		wait(2000);
+		Thread.sleep(1000);
 		((Stage)submitButton.getScene().getWindow()).close();
 		}
 	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		majorBox.getItems().addAll("Business", "Accouting", "Finance");
+		majorBox.getItems().addAll((new Major()).getMajor());
 	}
 }

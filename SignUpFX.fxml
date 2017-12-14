@@ -44,7 +44,7 @@
             </HBox>
             <HBox alignment="CENTER" layoutX="17.0" layoutY="55.0" spacing="3.0">
                <children>
-                  <Label fx:id="gendereLabel" alignment="TOP_LEFT" prefWidth="80.0" text="Gender: *">
+                  <Label fx:id="genderLabel" alignment="TOP_LEFT" prefWidth="80.0" text="Gender: *">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -54,7 +54,7 @@
                         <ToggleGroup fx:id="genderToggle" />
                      </toggleGroup>
                   </RadioButton>
-                  <RadioButton fx:id="FemaleRadioButton" layoutX="132.0" layoutY="11.0" mnemonicParsing="false" text="Female" toggleGroup="$genderToggle" />
+                  <RadioButton fx:id="femaleRadioButton" layoutX="132.0" layoutY="11.0" mnemonicParsing="false" text="Female" toggleGroup="$genderToggle" />
                </children>
                <padding>
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />

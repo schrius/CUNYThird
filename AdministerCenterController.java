@@ -1,5 +1,6 @@
 package Register;
 
+import java.io.IOException;
 /*
  * Administer component manipulate all data getting, updating 
  * adding new courses, students
@@ -9,6 +10,9 @@ import java.sql.SQLException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
@@ -18,67 +22,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 public class AdministerCenterController {
+	Parent parent;
 	@FXML
 	private TextField searchField;
-
-	// Course pane
-	@FXML
-	private TextField courseCode;
-	@FXML
-	private TextField courseName;
-	@FXML
-	private TextField courseDescription;
-	@FXML
-	private TextField courseSemester;
-	@FXML
-	private TextField courseRoom;
-	@FXML
-	private TextField courseStartDate;
-	@FXML
-	private TextField courseEndDate;
-	@FXML
-	private TextField courseDays;
-	@FXML
-	private TextField courseTime;
-	@FXML
-	private TextField courseRequirement;
-	@FXML
-	private TextField courseUnit;
-	@FXML
-	private TextField instructorID;
-	@FXML
-	private TextField departmentNumber;
-
-	// Student pane
-	@FXML
-	private TextField studentID;
-	@FXML
-	private TextField firstName;
-	@FXML
-	private TextField lastName;
-	@FXML
-	private TextField address;
-	@FXML
-	private TextField city;
-	@FXML
-	private TextField state;
-	@FXML
-	private TextField zipCode;
-	@FXML
-	private TextField SSN;
-	@FXML
-	private TextField DOB;
-	@FXML
-	private TextField major;
-	@FXML
-	private TextField gender;
-	@FXML
-	private TextField GPA;
-	@FXML
-	private TextField totalUnits;
-	@FXML
-	private TextField dueTuition;
 
 	//radioButton for selecting different tables.
 	@FXML
@@ -103,11 +52,15 @@ public class AdministerCenterController {
 	@FXML
 	private Button addCourseButton;
 	@FXML
-	private Button deleteCourseButton;
-	@FXML
 	private Button addStudentButton;
 	@FXML
-	private Button deleteStudentButton;
+	private Button addInstructorButton;
+	@FXML
+	private Button removeCourseButton;
+	
+	@FXML
+	private TextField removeCourseField;
+
 	@FXML
 	private ToggleGroup toggleGroupSearch;
 	
@@ -233,8 +186,7 @@ public class AdministerCenterController {
 			
 		}
 		else {
-			sql = "SELECT * FROM Student WHERE FirstName = '" + search + "' OR " + "LastName = '" + search
-					+ "' OR StudentID = '" + search + "'";
+			sql = "SELECT * FROM Student WHERE StudentID = " + Integer.parseInt(search);
 			RegisterJDBC.excuteSQL(sql);
 
 			TableColumn<Student, String> idColumn = new TableColumn<>("StudentID");
@@ -311,31 +263,38 @@ public class AdministerCenterController {
 	}
 
 	// Button listener for adding new student into database with information from Textfield
-	public void addStudentButtonListener() throws SQLException {
-		String sql = "INSERT INTO Student(StudentID, FirstName, LastName, Address, City, State,"
-				+ "ZipCode, SSN, DOB, Major, Gender, GPA, TotalUnits, DueTuition) VALUES"
-				+ "(" + studentID.getText() + "," + "'" + firstName.getText() + "'," + "'" + lastName.getText() + "',"
-				+ "'" + address.getText() + "'," + "'" + city.getText() + "'," + "'" + state.getText() + "',"
-				+ "'" + zipCode.getText() + "'," + "'" + SSN.getText() + "'," + "'" + DOB.getText() + "',"
-				+ "'" + major.getText() + "'," + "'" + gender.getText() + "'," + GPA.getText() + ","
-				 + totalUnits.getText() + ","+ dueTuition.getText() + ")";
-		RegisterJDBC.excuteSQL(sql);
-	}
-
-	// Button listener for deleting a student from the database.
-	public void deleteStudentButtonListener() throws SQLException {
-		String sql = "DELETE FROM Student WHERE StudentID =" + "'" + studentID.getText() + "'";
-		RegisterJDBC.excuteSQL(sql);
+	public void addStudentButtonListener() throws IOException {
+		Stage stage = new Stage();
+		stage.initModality(Modality.APPLICATION_MODAL);
+		parent = FXMLLoader.load(getClass().getResource("AddStudentFX.fxml"));
+		Scene scene = new Scene(parent);
+		stage.setScene(scene);
+		stage.showAndWait();
 	}
 
 	// Button listener for adding new course into database with information from Textfield
-	public void addCourseButtonListener() {
-
+	public void addCourseButtonListener() throws IOException {
+		Stage stage = new Stage();
+		stage.initModality(Modality.APPLICATION_MODAL);
+		parent = FXMLLoader.load(getClass().getResource("AddCourseFX.fxml"));
+		Scene scene = new Scene(parent);
+		stage.setScene(scene);
+		stage.showAndWait();
 	}
+	public void addInstructorButtonListener() throws IOException {
+		Stage stage = new Stage();
+		stage.initModality(Modality.APPLICATION_MODAL);
+		parent = FXMLLoader.load(getClass().getResource("AddInstructorFX.fxml"));
+		Scene scene = new Scene(parent);
+		stage.setScene(scene);
+		stage.showAndWait();
+	}
+	
+	
 
 	// Button listener for deleting a student from the database.
-	public void deleteCourseButtonListener() throws SQLException {
-		String sql = "DELETE FROM Course WHERE CourseCode =" + "'" + courseCode.getText() + "'";
+	public void removeCourseButtonListener() throws SQLException {
+		String sql = "DELETE FROM Course WHERE CourseCode =" + "'" + removeCourseField.getText() + "'";
 		RegisterJDBC.excuteSQL(sql);
 	}
 
@@ -349,13 +308,17 @@ public class AdministerCenterController {
 	ObservableList<Student> getStudent() throws SQLException{
 		ObservableList<Student> students = FXCollections.observableArrayList();
 		while(RegisterJDBC.result.next()){
-		students.add(new Student(RegisterJDBC.result.getString("StudentID"), RegisterJDBC.result.getString("FirstName"),
+		students.add(new Student(RegisterJDBC.result.getString("StudentID"), 
+				RegisterJDBC.result.getString("FirstName"),
 				RegisterJDBC.result.getString("LastNAME"), 
 				RegisterJDBC.result.getString("Email"),
 				RegisterJDBC.result.getString("Address"),
-				RegisterJDBC.result.getString("City"), RegisterJDBC.result.getString("State"),
-				RegisterJDBC.result.getString("ZipCode"), RegisterJDBC.result.getString("SSN"),
-				RegisterJDBC.result.getString("DOB"), RegisterJDBC.result.getString("Major"),
+				RegisterJDBC.result.getString("City"), 
+				RegisterJDBC.result.getString("State"),
+				RegisterJDBC.result.getString("ZipCode"), 
+				RegisterJDBC.result.getString("SSN"),
+				RegisterJDBC.result.getString("DOB"), 
+				RegisterJDBC.result.getString("Major"),
 				RegisterJDBC.result.getString("Gender"),
 				Double.parseDouble(RegisterJDBC.result.getString("GPA")),
 				Double.parseDouble(RegisterJDBC.result.getString("FurtureTuition")),
